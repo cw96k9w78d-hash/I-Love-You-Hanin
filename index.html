@@ -1,9 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-<title>Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You Hanin ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<h1>الموقع شغال ❤️</h1>
+
+<div class="start">
+    <h1>❤️ I Love You Hanin ❤️</h1>
+    <button id="startBtn">اضغطي هنا يا حنين ❤️</button>
+</div>
+
+<div class="main" style="display:none">
+
+    <div class="gallery">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+    </div>
+
+    <div class="message">
+        <p id="text"></p>
+    </div>
+
+    <button id="toggleMusic">🎵 تشغيل / إيقاف الأغنية</button>
+
+</div>
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+
 </body>
 </html>

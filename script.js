@@ -1,58 +1,51 @@
 const startBtn = document.getElementById("startBtn");
 const music = document.getElementById("music");
-const main = document.querySelector(".main");
 const start = document.querySelector(".start");
+const main = document.querySelector(".main");
 const text = document.getElementById("text");
 const toggleMusic = document.getElementById("toggleMusic");
 
 const message = `
 
-كل يوم بيمر وأنا معاكي بحس إن الدنيا أحلى ❤️
+إلى حنين ❤️
 
-إنتي أجمل حاجة حصلتلي.
+كل يوم بيمر وأنا معاكي بحس إن الدنيا أجمل.
 
-وبحبك أكتر من أي كلام يوصف.
+إنتي الضحكة اللي بتنور أيامي،
+وأجمل حاجة حصلتلي.
 
-ربنا يخليكي ليا يا حنين ❤️
+بحبك جدًا...
+وربنا يخليكي ليا دايمًا. 🌹❤️
+
+I Love You Forever ❤️
 `;
 
-let i = 0;
+startBtn.onclick = () => {
 
-startBtn.onclick = function(){
+    start.style.display = "none";
+    main.style.display = "block";
 
-start.style.display="none";
-main.style.display="block";
+    music.play().catch(() => {});
 
-music.play().catch(()=>{});
+    text.innerHTML = "";
 
-function type(){
+    let i = 0;
 
-if(i<message.length){
+    function type() {
+        if (i < message.length) {
+            text.innerHTML += message.charAt(i);
+            i++;
+            setTimeout(type, 45);
+        }
+    }
 
-text.innerHTML+=message.charAt(i);
+    type();
+};
 
-i++;
-
-setTimeout(type,50);
-
-}
-
-}
-
-type();
-
-}
-
-toggleMusic.onclick=function(){
-
-if(music.paused){
-
-music.play();
-
-}else{
-
-music.pause();
-
-}
-
-}
+toggleMusic.onclick = () => {
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
+};

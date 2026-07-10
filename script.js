@@ -6,33 +6,53 @@ const text = document.getElementById("text");
 const toggleMusic = document.getElementById("toggleMusic");
 
 const message = `
+
 كل يوم بيمر وأنا معاكي بحس إن الدنيا أحلى ❤️
-إنتي أجمل حاجة حصلتلي، وبحبك أكتر من أي كلام يوصف.
-ربنا يخليكي ليا دايمًا يا حنين ❤️
+
+إنتي أجمل حاجة حصلتلي.
+
+وبحبك أكتر من أي كلام يوصف.
+
+ربنا يخليكي ليا يا حنين ❤️
 `;
 
 let i = 0;
 
-startBtn.onclick = () => {
-    start.style.display = "none";
-    main.style.display = "block";
-    music.play();
+startBtn.onclick = function(){
 
-    function type() {
-        if (i < message.length) {
-            text.innerHTML += message.charAt(i);
-            i++;
-            setTimeout(type, 50);
-        }
-    }
+start.style.display="none";
+main.style.display="block";
 
-    type();
-};
+music.play().catch(()=>{});
 
-toggleMusic.onclick = () => {
-    if (music.paused) {
-        music.play();
-    } else {
-        music.pause();
-    }
-};
+function type(){
+
+if(i<message.length){
+
+text.innerHTML+=message.charAt(i);
+
+i++;
+
+setTimeout(type,50);
+
+}
+
+}
+
+type();
+
+}
+
+toggleMusic.onclick=function(){
+
+if(music.paused){
+
+music.play();
+
+}else{
+
+music.pause();
+
+}
+
+}

@@ -1,78 +1,96 @@
-const message = `
+const text =
+"يا حنين ❤️\n\n" +
 
-يا حنين ❤️
+"يمكن الكلام ميكفيش يوصف اللي جوايا...\n\n" +
 
-يمكن الكلام ميكفيش يوصف اللي جوايا...
+"بس كل يوم بيعدي بحبك أكتر من اليوم اللي قبله.\n\n" +
 
-بس كل يوم بيعدي بحبك أكتر من اليوم اللي قبله.
+"إنتي أجمل حاجة حصلتلي في حياتي،\n" +
+"وأحلى صدفة ربنا رزقني بيها.\n\n" +
 
-إنتي أجمل حاجة حصلتلي في حياتي،
-وأحلى صدفة ربنا رزقني بيها.
+"بحب ضحكتك،\n" +
+"وبحب كلامك،\n" +
+"وبحب كل حاجة فيكي.\n\n" +
 
-بحب ضحكتك،
-وبحب كلامك،
-وبحب كل حاجة فيكي.
+"مهما يحصل بينا مشاكل،\n" +
+"وخناقات بس عمري\n" +
+"ما بطلت أحبك، لأنك روحي.\n" +
+"وبنتي، وصاحبتي، وأختي،\n" +
+"وكل حاجة حلوة في الدنيا. ❤️\n\n" +
 
-مهما يحصل بينا مشاكل.
-و خناقات بس عمري .
-مابطلت احبك لانك روحي.
-و بنتي و صاحبتي و اختي .
-و كل حاجه حلوه في الدنيا.
+"ووعد مني...\n" +
+"مهما حصل بينا،\n" +
+"هفضل أحبك وأتمسك بيكي.\n\n" +
 
-ووعد مني...
-مهما حصل بينا،
-هفضل أحبك وأتمسك بيكي.
+"نفسي أشوفك دايمًا سعيدة،\n" +
+"وأكون سبب ضحكتك كل يوم.\n\n" +
 
-نفسي أشوفك دايمًا سعيدة،
-وأكون سبب ضحكتك كل يوم.
+"ربنا يخليكي ليا،\n" +
+"ويجمعنا على خير يا أحلى حنين. ❤️\n\n" +
 
-ربنا يخليكي ليا،
-ويجمعنا على خير يا أحلى حنين. ❤️
-
-I Love You Forever ❤️
-
-`;
+"Love You Forever ❤️";
 
 const startBtn = document.getElementById("startBtn");
 const textElement = document.getElementById("text");
+const musicBtn = document.getElementById("musicBtn");
+const player = document.getElementById("player");
 
 startBtn.onclick = () => {
 
     document.querySelector(".start").style.display = "none";
     document.querySelector(".main").style.display = "block";
 
+    let i = 0;
     textElement.innerHTML = "";
 
-    let i = 0;
+    function type() {
 
-    function typeWriter(){
+        if (i < text.length) {
 
-        if(i < message.length){
-
-            if(message.charAt(i) === "\n"){
-
+            if (text.charAt(i) === "\n") {
                 textElement.innerHTML += "<br>";
-
-            }else{
-
-                textElement.innerHTML += message.charAt(i);
-
+            } else {
+                textElement.innerHTML += text.charAt(i);
             }
 
             i++;
 
-            setTimeout(typeWriter,40);
-
+            setTimeout(type, 40);
         }
 
     }
 
-    typeWriter();
-
-    // تشغيل الفيديو داخل الصفحة
-    const player = document.getElementById("youtubePlayer");
-
-    player.src =
-    "https://www.youtube.com/embed/wxJqjneij8c?autoplay=1&rel=0";
+    type();
 
 };
+
+// تشغيل الأغنية
+musicBtn.onclick = () => {
+
+    player.src =
+    "https://www.youtube.com/embed/wxJqjneij8c?autoplay=1";
+
+};
+
+// القلوب المتحركة
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+
+}
+
+setInterval(createHeart, 400);

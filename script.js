@@ -1,4 +1,4 @@
-const text =
+const message =
 "يا حنين ❤️\n\n" +
 
 "يمكن الكلام ميكفيش يوصف اللي جوايا...\n\n" +
@@ -12,10 +12,10 @@ const text =
 "وبحب كلامك،\n" +
 "وبحب كل حاجة فيكي.\n\n" +
 
-"مهما يحصل بينا مشاكل،\n" +
-"وخناقات بس عمري\n" +
-"ما بطلت أحبك، لأنك روحي.\n" +
-"وبنتي، وصاحبتي، وأختي،\n" +
+"مهما يحصل بينا مشاكل.\n" +
+"وخناقات بس عمري.\n" +
+"ما بطلت أحبك لأنك روحي.\n" +
+"وبنتي وصاحبتي وأختي.\n" +
 "وكل حاجة حلوة في الدنيا. ❤️\n\n" +
 
 "ووعد مني...\n" +
@@ -32,65 +32,83 @@ const text =
 
 const startBtn = document.getElementById("startBtn");
 const textElement = document.getElementById("text");
+const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
-const player = document.getElementById("player");
 
 startBtn.onclick = () => {
 
     document.querySelector(".start").style.display = "none";
     document.querySelector(".main").style.display = "block";
 
+    music.play().catch(() => {});
+
     let i = 0;
     textElement.innerHTML = "";
 
-    function type() {
+    function typeWriter(){
 
-        if (i < text.length) {
+        if(i < message.length){
 
-            if (text.charAt(i) === "\n") {
+            if(message.charAt(i) === "\n"){
                 textElement.innerHTML += "<br>";
-            } else {
-                textElement.innerHTML += text.charAt(i);
+            }else{
+                textElement.innerHTML += message.charAt(i);
             }
 
             i++;
 
-            setTimeout(type, 40);
+            setTimeout(typeWriter,40);
+
         }
 
     }
 
-    type();
+    typeWriter();
 
 };
 
-// تشغيل الأغنية
+// تشغيل وإيقاف الأغنية
+
 musicBtn.onclick = () => {
 
-    player.src =
-    "https://www.youtube.com/embed/wxJqjneij8c?autoplay=1";
+    if(music.paused){
+
+        music.play();
+
+        musicBtn.innerHTML="⏸️ إيقاف الأغنية";
+
+    }else{
+
+        music.pause();
+
+        musicBtn.innerHTML="🎵 تشغيل الأغنية";
+
+    }
 
 };
 
 // القلوب المتحركة
+
 function createHeart(){
 
-    const heart = document.createElement("div");
+    const heart=document.createElement("div");
 
-    heart.className = "heart";
+    heart.className="heart";
 
-    heart.innerHTML = "❤️";
+    heart.innerHTML="❤️";
 
-    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.left=Math.random()*100+"vw";
 
-    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+    heart.style.fontSize=(20+Math.random()*25)+"px";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => {
+    setTimeout(()=>{
+
         heart.remove();
-    }, 6000);
+
+    },6000);
 
 }
 
-setInterval(createHeart, 400);
+setInterval(createHeart,350);
